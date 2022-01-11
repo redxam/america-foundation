@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -17,16 +16,19 @@ export default function Home() {
           <a href='https://america.foundation'>America Foundation!</a>
         </h1>
 
-        <p className={styles.description}>Please enter an amount </p>
-        <input
-          className={styles.card}
-          type={'text'}
-          placeholder='Enter amount'
-        />
+        <form action='/api/stripe' method='POST'>
+          <p className={styles.description}>Please enter an amount </p>
+          <input
+            className={styles.card}
+            type='number'
+            placeholder='Enter amount'
+            name='amount'
+          />
 
-        <div className={styles.card} style={{ textAlign: 'center' }}>
-          <h2>Pay</h2>
-        </div>
+          <button className={styles.card} style={{ textAlign: 'center' }}>
+            <h2>Pay</h2>
+          </button>
+        </form>
       </main>
 
       <footer className={styles.footer}>
